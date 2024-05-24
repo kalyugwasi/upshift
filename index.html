@@ -6,6 +6,8 @@
     <title>UPSHIFT - Shift Your Startup Up</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2nfhAVC0vztNka0XGTwM1gh+Os7JbX9naAIDl24A0KCZkLG1z1C+Mj59fP3n9d8N9cwVg=="
+    crossorigin="" />
     <style>
         body {
             font-family: 'Roboto', sans-serif;
@@ -125,7 +127,35 @@
             padding: 10px;
             text-align: center;
         }
+        #map {
+            height: 400px;
+            width: 100%;
+        }
     </style>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-pFw9LcAGMglyCZZHStlsDq3vISzIH1phVgSKksCuN8llq5aJlJ6Ag2y+0tP5eUEx6IF5K7cH/1O90Sc8pFS8Nw==" crossorigin=""></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Create a map centered on Jaipur
+            var map = L.map('map').setView([26.9124, 75.7873], 12);
+
+            // Add OpenStreetMap tiles
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+
+            // Add markers for hoardings
+            var hoardings = [
+                { lat: 26.9204, lng: 75.7843, title: "Hoarding 1", details: "Details about Hoarding 1" },
+                { lat: 26.9129, lng: 75.7855, title: "Hoarding 2", details: "Details about Hoarding 2" },
+                { lat: 26.9100, lng: 75.7890, title: "Hoarding 3", details: "Details about Hoarding 3" }
+            ];
+
+            hoardings.forEach(function(hoarding) {
+                var marker = L.marker([hoarding.lat, hoarding.lng]).addTo(map);
+                marker.bindPopup('<h3>' + hoarding.title + '</h3><p>' + hoarding.details + '</p>');
+            });
+        });
+    </script>
 </head>
 <body>
 
@@ -184,10 +214,12 @@
 
 <div class="contact" id="contact">
     <h2>Contact Us</h2>
-    <p>For more information, visit us at <a href=https://kalyugwasi.github.io/upshift>https://kalyugwasi.github.io/upshift</a></p>
+    <p>For more information, visit us at <a href="https://kalyugwasi.github.io/upshift">https://kalyugwasi.github.io/upshift</a></p>
     <p>Phone: +91-7389-085-391</p>
-    <p>Form: <a href=https://forms.gle/SNvPHXj4vNzLHj8Z6>FORM</a></p>
+    <p>Form: <a href="https://forms.gle/SNvPHXj4vNzLHj8Z6">FORM</a></p>
 </div>
+
+<div id="map"></div>
 
 <footer>
     &copy; 2024 UPSHIFT. All rights reserved.
