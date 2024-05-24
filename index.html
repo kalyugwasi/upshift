@@ -6,7 +6,6 @@
     <title>UPSHIFT - Shift Your Startup Up</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2nfhAVC0vztNka0XGTwM1gh+Os7JbX9naAIDl24A0KCZkLG1z1C+Mj59fP3n9d8N9cwVg==" crossorigin="" />
     <style>
         body {
             font-family: 'Roboto', sans-serif;
@@ -15,44 +14,184 @@
             background-color: #A1AEB1;
             color: #333;
         }
-        #map {
-            height: 400px;
+        header {
+            background-image: url('https://source.unsplash.com/1600x900/?startup,technology');
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            padding: 60px 20px;
+            text-align: center;
+            position: relative;
+        }
+        header::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+        header img {
+            max-width: 150px;
+            z-index: 2;
+            position: relative;
+        }
+        header h1, header p {
+            z-index: 2;
+            position: relative;
+        }
+        header h1 {
+            margin: 10px 0;
+            font-size: 3em;
+        }
+        header p {
+            font-size: 1.5em;
+        }
+        nav {
+            background-color: #f8b400;
+            padding: 10px 0;
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover {
+            color: #333;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .services, .about, .partners {
+            margin: 40px 0;
+        }
+        .services .service, .about .about-item {
+            flex: 1;
+            margin: 10px;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        .services .service:hover, .about .about-item:hover {
+            transform: scale(1.05);
+        }
+        .services .service img, .about .about-item img {
+            max-width: 100px;
+        }
+        .partners img {
+            max-width: 100px;
+            margin: 10px;
+            transition: transform 0.3s;
+        }
+        .partners img:hover {
+            transform: scale(1.1);
+        }
+        .contact {
+            background-color: #f8b400;
+            padding: 20px;
+            text-align: center;
+            color: #fff;
+        }
+        .contact a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        .contact a:hover {
+            color: #333;
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
         }
     </style>
 </head>
 <body>
 
-<div id="map"></div>
+<header>
+    <img src="Images/Picture1.png" alt="UPSHIFT Logo">
+    <h1>UPSHIFT</h1>
+    <p>---SHIFT YOUR STARTUP UP---</p>
+</header>
 
-<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-pFw9LcAGMglyCZZHStlsDq3vISzIH1phVgSKksCuN8llq5aJlJ6Ag2y+0tP5eUEx6IF5K7cH/1O90Sc8pFS8Nw==" crossorigin=""></script>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        console.log("DOM fully loaded and parsed");
-        
-        var map = L.map('map').setView([26.9124, 75.7873], 12);
-        console.log("Map initialized");
+<nav>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact</a></li>
+    </ul>
+</nav>
 
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
+<div class="container">
+    <div class="about">
+        <h2>About Us</h2>
+        <div class="about-item">
+            <img src="Images/team.png" alt="Team Icon">
+            <h3>Our Mission</h3>
+            <p>We aim to empower startups by providing essential services that drive growth and success.</p>
+        </div>
+    </div>
 
-        console.log("Tile layer added to map");
+    <div class="services">
+        <h2>Our Services</h2>
+        <div class="services">
+            <div class="service">
+                <img src="Images/storage.png" alt="Transportation Icon">
+                <h3>Transportation</h3>
+                <p>Efficient logistics solutions for your startup needs.</p>
+            </div>
+            <div class="service">
+                <img src="Images/warehouse.png" alt="Warehousing Icon">
+                <h3>Warehousing</h3>
+                <p>Secure and scalable storage options for your business.</p>
+            </div>
+            <div class="service">
+                <img src="Images/promotion.png" alt="Promotion Icon">
+                <h3>Promotion</h3>
+                <p>Effective marketing and promotional strategies.</p>
+            </div>
+        </div>
+    </div>
 
-        var hoardings = [
-            { lat: 26.9204, lng: 75.7843, title: "Hoarding 1", details: "Details about Hoarding 1" },
-            { lat: 26.9129, lng: 75.7855, title: "Hoarding 2", details: "Details about Hoarding 2" },
-            { lat: 26.9100, lng: 75.7890, title: "Hoarding 3", details: "Details about Hoarding 3" }
-        ];
+    <div class="partners">
+        <h2>Our Partners</h2>
+        <img src="Images/jic.png" alt="JIC" style="width:400px;height:100px;">
+        <img src="Images/jecrc.png" alt="JECRC University" style="width:800px;height:69px;">
+    </div>
+</div>
 
-        hoardings.forEach(function(hoarding) {
-            var marker = L.marker([hoarding.lat, hoarding.lng]).addTo(map);
-            marker.bindPopup('<h3>' + hoarding.title + '</h3><p>' + hoarding.details + '</p>');
-        });
+<div class="contact" id="contact">
+    <h2>Contact Us</h2>
+    <p>For more information, visit us at <a href=https://kalyugwasi.github.io/upshift>https://kalyugwasi.github.io/upshift</a></p>
+    <p>Phone: +91-7389-085-391</p>
+    <p>Form: <a href=https://forms.gle/SNvPHXj4vNzLHj8Z6>FORM</a></p>
+</div>
 
-        console.log("Markers added to map");
-    });
-</script>
+<footer>
+    &copy; 2024 UPSHIFT. All rights reserved.
+</footer>
 
 </body>
 </html>
